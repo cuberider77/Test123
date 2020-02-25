@@ -1,0 +1,33 @@
+﻿@model WebshopFietsen.Models.LoginCredentials
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Toevoegen</title>
+</head>
+<body class="m-3">
+    <div class="bladspiegel">
+        <form asp-action="Login" asp-controller="Auth">
+            <h2>ONLINE FIETSENSHOP - Aanmeldpagina</h2>
+            <table class="loginTabel">
+                <tr>
+                    <td class="loginCol1">Gebruikersnaam:</td>
+                    <td class="loginCol2"><input type="text" asp-for="Gebruikersnaam" /></td>
+                    <td class="loginCol3"><span class="fout" asp-validation-for="Gebruikersnaam"></span></td>
+                </tr>
+                <tr>
+                    <td class="loginCol1">Wachtwoord:</td>
+                    <td class="loginCol2"><input type="password" asp-for="Wachtwoord" /></td>
+                    <td class="loginCol3"><span class="fout" asp-validation-for="Wachtwoord"></span></td>
+                </tr>
+            </table>
+            <p class="afstandTop centreren"><input type="submit" value="Meld aan..." /></p>
+            <p class="fout centreren">@ViewBag.fout</p>
+        </form>
+    </div>
+</body>
+</html>

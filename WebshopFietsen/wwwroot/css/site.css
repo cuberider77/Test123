@@ -1,0 +1,104 @@
+﻿body {
+    background-image: url('../images/kassei.jpg');
+}
+
+h2 {
+    padding-bottom:30px;
+    font-family: Bahnschrift;
+    font-weight: bold;
+    color: darkolivegreen;
+    text-align: center;
+}
+
+.bladspiegel {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
+    width: 1500px;
+    background-color:whitesmoke;
+    border-radius: 7px;
+}
+
+.afbeeldingCatalogus{
+    width:250px;
+}
+
+.afbeeldingToevoegen{
+    width:700px;
+}
+
+.afbeeldingWinkelmand {
+    width: 150px;
+}
+
+.veldnamen{
+    color:darkolivegreen;
+    font-weight:bold;
+}
+
+.veldnamenRij {
+    color: white;
+    font-weight: bold;
+    background-color:darkolivegreen;
+}
+
+.celrandOnder {
+    border-bottom: solid;
+    border-width: thin;
+    border-color: darkolivegreen;
+}
+
+.klanttabel {
+    border-top:solid;
+    border-color: darkolivegreen;
+}
+
+.fout{
+    color:red;
+    font-weight:bold;
+}
+
+.centreren{
+    text-align:center;
+}
+
+.afstandTop{
+    padding-top:20px;
+}
+
+.rechtsUitlijnen{
+    text-align:right;
+}
+
+.bottomline {
+    border-top: solid;
+    border-color: darkolivegreen;
+}
+
+.opmaakDeleteKnop{
+    width:30px;
+}
+
+.tekstPadding{
+    padding-left:250px;
+    padding-right:250px;
+}
+
+.loginTabel {
+    margin-left:500px;
+    margin-right:auto;
+}
+
+.loginCol1{
+    width: 200px;
+}
+
+.loginCol2 {
+    width: 200px;
+}
+
+.loginCol3 {
+    width: 500px;
+}
+

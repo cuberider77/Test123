@@ -1,0 +1,110 @@
+﻿@model WebshopFietsen.Models.VMWinkelmand
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Winkelmand</title>
+</head>
+<body class="m-3">
+    <div class="bladspiegel">
+        <form asp-action="Winkelmand" asp-controller="Home">
+            <h2>ONLINE FIETSENSHOP - Winkelmandje</h2>
+            <table class="table table-borderless klanttabel">
+                <tr>
+                    <td class="veldnamen">Klantnummer:</td>
+                    <td>@Model.klant.KlantNr</td>
+                </tr>
+                <tr>
+                    <td class="veldnamen">Naam:</td>
+                    <td>@Model.klant.Naam @Model.klant.Voornaam</td>
+                </tr>
+                <tr>
+                    <td class="veldnamen">Adres:</td>
+                    <td>@Model.klant.Adres</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Model.klant.PC @Model.klant.Gemeente</td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td class="veldnamen">Besteldatum:</td>
+                    <td>@DateTime.Today.ToLongDateString()</td>
+                </tr>
+            </table>
+            <table class="table">
+                <tr class="veldnamenRij">
+                    <td></td>
+                    <td class="centreren">Foto</td>
+                    <td class="centreren">ArtNr</td>
+                    <td>Naam</td>
+                    <td class="centreren">Aantal</td>
+                    <td class="rechtsUitlijnen">Prijs</td>
+                    <td class="rechtsUitlijnen">Totaal</td>
+                </tr>
+                @if (Model.winkelmandItemRepository.WinkelmandItems.Count > 0)
+                {
+                    @foreach (var wmi in Model.winkelmandItemRepository.WinkelmandItems)
+                    {
+                        <tr>
+                            <td class="centreren">
+                                <a asp-action="Verwijderen" asp-controller="Home" asp-route-artnr="@wmi.ArtNr" asp-route-aantal="@wmi.Aantal">
+                                    <img class="opmaakDeleteKnop" src="~/images/delete.png" />
+                                </a>
+                            </td>
+                            <td class="centreren"><img class="afbeeldingWinkelmand rounded-lg shadow" src="@Url.Content("~/images/" + wmi.Foto)" /></td>
+                            <td class="centreren">@wmi.ArtNr</td>
+                            <td>@wmi.Naam</td>
+                            <td class="centreren">@wmi.Aantal</td>
+                            <td class="rechtsUitlijnen">€ @Math.Round(wmi.Verkoopprijs, 2).ToString("#.00")</td>
+                            <td class="rechtsUitlijnen">€ @Math.Round(@wmi.Totaal, 2).ToString("#.00")</td>
+                        </tr>
+                    }
+                    <tr class="table-borderless bottomline">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="veldnamen rechtsUitlijnen">Totaal excl.:</td>
+                        <td class="rechtsUitlijnen">€ @Math.Round(Model.totalen.ExclBTW, 2).ToString("#.00")</td>
+                    </tr>
+                    <tr class="table-borderless">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="veldnamen rechtsUitlijnen">BTW (21%):</td>
+                        <td class="rechtsUitlijnen">€ @Math.Round(Model.totalen.BTW, 2).ToString("#.00")</td>
+                    </tr>
+                    <tr class="table-borderless">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="veldnamen rechtsUitlijnen">Totaal incl.:</td>
+                        <td class="rechtsUitlijnen">€ @Math.Round(Model.totalen.InclBTW, 2).ToString("#.00")</td>
+                    </tr>
+                }
+            </table>
+            @if (Model.winkelmandItemRepository.WinkelmandItems.Count == 0)
+            {
+                <p class="centreren afstandTop">Je winkelmandje is leeg.</p>
+            }
+            else
+            {
+                <p class="centreren afstandTop"><input type="submit" value="Inhoud van het winkelmandje bestellen" /></p>
+            }
+            <p class="centreren afstandTop"><a asp-action="Index" asp-controller="Home">Terug naar de catalogus</a></p>
+        </form>
+    </div>
+</body>
+</html>

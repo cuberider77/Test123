@@ -1,0 +1,49 @@
+﻿@model WebshopFietsen.Models.VMToevoegen
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Toevoegen</title>
+</head>
+<body class="m-3">
+    <div class="bladspiegel">
+        <form asp-action="Toevoegen" asp-controller="Home">
+            <h2>ONLINE FIETSENSHOP - Item toevoegen aan winkelmandje</h2>
+                <table class="table table-borderless ">
+                    <tr>
+                        <td rowspan="4" align="center">
+                            <img class="afbeeldingToevoegen rounded-lg shadow"
+                                 src="@Url.Content("~/images/" + Model.product.Foto)" />
+                        </td>
+                        <td class="veldnamen">ArtNr:</td>
+                        <td>@Model.product.ArtNr</td>
+                    </tr>
+                    <tr>
+                        <td class="veldnamen">Naam:</td>
+                        <td>@Model.product.Naam</td>
+                    </tr>
+                    <tr>
+                        <td class="veldnamen">Verkoopprijs:</td>
+                        <td>€ @Math.Round(Model.product.Verkoopprijs, 2)</td>
+                    </tr>
+                    <tr>
+                        <td class="veldnamen">Voorraad:</td>
+                        <td>@Model.product.Voorraad</td>
+                    </tr>
+                </table>
+            <p class="centreren afstandTop">
+                Aantal toe te voegen aan het winkelmandje:
+                <input type="text" asp-for="aantal" />
+                <input type="submit" value="Voeg toe aan mandje..." />
+            </p>
+            <p class="centreren"><span asp-validation-for="aantal" class="fout"></span></p>
+            <p class="fout centreren">@ViewBag.fout</p>
+            <p class="centreren afstandTop"><a asp-action="Index" asp-controller="Home">Terug naar de catalogus</a></p>
+        </form>
+    </div>
+</body>
+</html>

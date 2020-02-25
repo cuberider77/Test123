@@ -1,0 +1,23 @@
+﻿@model WebshopFietsen.Models.Bestelling
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Toevoegen</title>
+</head>
+<body class="m-3">
+    <div class="bladspiegel">
+            <h2>ONLINE FIETSENSHOP - Bestelbevestiging</h2>
+            <p class="tekstPadding">We hebben uw bestelling met bestelnummer <span class="veldnamen">@Model.OrderId</span> goed ontvangen.</p>
+            <p class="tekstPadding">Na overschrijving van <span class="veldnamen">€ @Math.Round(Model.Bedrag, 2)</span> op rekeningnummer <span class="veldnamen">BE12 3456 7890 1234</span> worden de goederen verpakt en verstuurd.</p>
+            <p class="tekstPadding">U ontving deze bevestiging ook via e-mail.</p>
+            <p class="tekstPadding">Bedankt voor uw vertrouwen!</p>
+            <p class="tekstPadding">L. Nassen</p>
+            <p class="centreren afstandTop"><a asp-action="Index" asp-controller="Home">Terug naar de catalogus</a></p>
+    </div>
+</body>
+</html>

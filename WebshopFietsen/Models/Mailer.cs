@@ -9,6 +9,7 @@ namespace WebshopFietsen.Models
 {
     public class Mailer
     {
+        //Declaratie van properties
         public string Ontvanger { get; set; }
         public string Onderwerp { get; set; }
         public string Bericht { get; set; }
